@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Papa from "papaparse";
+
+function importAll(r) {
+  let files = "";
+  r.keys().forEach((item) => {
+    console.log("ITEM: ", item);
+    files = item.substr(2);
+  });
+  return files;
+}
+
+const csvFileName = importAll(require.context("./csv-input", false, /\.csv/));
+let csvInput = {};
+
+Papa.parse(csvFileName, {
+  complete: function (result) {
+    csvInput = result.data;
+  }
+});
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  console.log("INPUT: ", csvInput);
+  return <div className="App"></div>;
 }
 
 export default App;
