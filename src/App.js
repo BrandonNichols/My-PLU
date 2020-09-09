@@ -1,27 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./App.css";
-import Papa from "papaparse";
-
-function importAll(r) {
-  let files = "";
-  r.keys().forEach((item) => {
-    console.log("ITEM: ", item);
-    files = item.substr(2);
-  });
-  return files;
-}
-
-const csvFileName = importAll(require.context("./csv-input", false, /\.csv/));
-let csvInput = {};
-
-Papa.parse(csvFileName, {
-  complete: function (result) {
-    csvInput = result.data;
-  }
-});
 
 function App() {
-  console.log("INPUT: ", csvInput);
+  const [produceArray, setProduceArray] = useState([]);
+
+  function pluProduceConnection(data) {
+    return data.map(
+      (produce) => `${produce.PLU} ${produce.VARIETY} ${produce.COMMODITY}`
+    );
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios.get(
+        "https://produce-lookup-server.herokuapp.com/api/produce"
+      );
+      setProduceArray(pluProduceConnection(result.data));
+    }
+    fetchData();
+  }, []);
+
+  console.log("PRODUCE_ARRAY: ", produceArray);
   return <div className="App"></div>;
 }
 
