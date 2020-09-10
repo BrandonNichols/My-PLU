@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ProduceContainer from "./components/ProduceContainer";
 import "./App.css";
 
 function App() {
   const [produceArray, setProduceArray] = useState([]);
 
   function pluProduceConnection(data) {
-    return data.map(
-      (produce) => `${produce.PLU} ${produce.VARIETY} ${produce.COMMODITY}`
+    return data.map((produce) =>
+      `${produce.PLU} ${produce.VARIETY} ${produce.COMMODITY}`.toUpperCase()
     );
   }
 
@@ -21,8 +22,11 @@ function App() {
     fetchData();
   }, []);
 
-  console.log("PRODUCE_ARRAY: ", produceArray);
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <ProduceContainer data={produceArray} />
+    </div>
+  );
 }
 
 export default App;

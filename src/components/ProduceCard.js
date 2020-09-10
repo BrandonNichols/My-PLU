@@ -1,7 +1,7 @@
 import React from "react";
 
-const ProduceCard = () => {
-  return <div></div>;
+const ProduceCard = (props) => {
+  return <div>{props.produceValue}</div>;
 };
 
 export default ProduceCard;
