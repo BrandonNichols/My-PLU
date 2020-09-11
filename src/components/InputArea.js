@@ -1,4 +1,11 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+
+const FormArea = styled.div`
+  top: 0;
+  left: 45%;
+  position: fixed;
+`;
 
 const InputArea = (props) => {
   const { list, setCurrentList } = props;
@@ -16,11 +23,11 @@ const InputArea = (props) => {
   };
 
   return (
-    <div>
+    <FormArea>
       <form>
         <input type="text" value={produceInput} onChange={handleInput} />
       </form>
-    </div>
+    </FormArea>
   );
 };
 
