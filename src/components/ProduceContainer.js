@@ -11,11 +11,15 @@ const ProduceArea = styled.div`
   margin-top: 100px;
 `;
 
+const Container = styled.div`
+  width: 100%;
+`;
+
 const ProduceContainer = (props) => {
   const [currentList, setCurrentList] = useState([]);
 
   return (
-    <div>
+    <Container>
       <InputArea list={props.data} setCurrentList={setCurrentList} />
       <ProduceArea>
         {!currentList.length
@@ -30,7 +34,7 @@ const ProduceContainer = (props) => {
               </Cell>
             ))}
       </ProduceArea>
-    </div>
+    </Container>
   );
 };
 

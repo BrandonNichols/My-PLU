@@ -5,6 +5,10 @@ const FormArea = styled.div`
   top: 0;
   left: 45%;
   position: fixed;
+
+  @media (max-width: 500) {
+    left: 40%;
+  }
 `;
 
 const InputArea = (props) => {
