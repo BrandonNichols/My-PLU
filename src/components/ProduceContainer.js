@@ -22,17 +22,11 @@ const ProduceContainer = (props) => {
     <Container>
       <InputArea list={props.data} setCurrentList={setCurrentList} />
       <ProduceArea>
-        {!currentList.length
-          ? props.data.map((produceValue, index) => (
-              <Cell key={index} cellNum={index}>
-                <ProduceCard produceValue={produceValue} />
-              </Cell>
-            ))
-          : currentList.map((produceValue, index) => (
-              <Cell key={index} cellNum={index}>
-                <ProduceCard produceValue={produceValue} />
-              </Cell>
-            ))}
+        {currentList.map((produceValue, index) => (
+          <Cell key={index} cellNum={index}>
+            <ProduceCard produceValue={produceValue} />
+          </Cell>
+        ))}
       </ProduceArea>
     </Container>
   );

@@ -6,8 +6,12 @@ const FormArea = styled.div`
   left: 45%;
   position: fixed;
 
-  @media (max-width: 500) {
-    left: 40%;
+  @media (max-width: 500px) {
+    left: 29%;
+  }
+
+  @media (max-width: 400px) {
+    left: 26%;
   }
 `;
 
@@ -29,7 +33,12 @@ const InputArea = (props) => {
   return (
     <FormArea>
       <form>
-        <input type="text" value={produceInput} onChange={handleInput} />
+        <input
+          type="text"
+          placeholder="PLU Number/Produce Name"
+          value={produceInput}
+          onChange={handleInput}
+        />
       </form>
     </FormArea>
   );
