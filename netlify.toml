@@ -1,7 +1,7 @@
 [build]
  command = "npm run build"
  publish = "/build"
- base = "/my-plu-heb"
+ base = "/*"
  [[redirects]]
    from = "/*"
    to = "/index.html"
