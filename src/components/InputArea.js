@@ -22,11 +22,7 @@ const InputArea = (props) => {
   const handleInput = (e) => {
     setProduceInput(e.target.value);
     setCurrentList(
-      list.filter((value) => {
-        if (value.includes(e.target.value.toUpperCase())) {
-          return value;
-        }
-      })
+      list.filter((value) => value.includes(e.target.value.toUpperCase()))
     );
   };
 
