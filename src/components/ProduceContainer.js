@@ -12,7 +12,7 @@ const ProduceArea = styled.div`
 `;
 
 const Container = styled.div`
-  width: 100%;
+  width: 100vw;
 `;
 
 const ProduceContainer = (props) => {
