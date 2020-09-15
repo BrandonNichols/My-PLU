@@ -15,15 +15,35 @@ const FormArea = styled.div`
   }
 `;
 
+const checkString = (input, list) => {
+  const splitInput = input.split(" ");
+  const inputLength = splitInput.length;
+  let matchCount = 0;
+  const filteredArray = [];
+
+  list.forEach((produceString) => {
+    splitInput.forEach((word) => {
+      if (produceString.includes(word)) {
+        matchCount++;
+      }
+
+      if (matchCount === inputLength) {
+        filteredArray.push(produceString);
+      }
+    });
+    matchCount = 0;
+  });
+
+  return filteredArray;
+};
+
 const InputArea = (props) => {
   const { list, setCurrentList } = props;
   const [produceInput, setProduceInput] = useState("");
 
   const handleInput = (e) => {
     setProduceInput(e.target.value);
-    setCurrentList(
-      list.filter((value) => value.includes(e.target.value.toUpperCase()))
-    );
+    setCurrentList(checkString(e.target.value.toUpperCase(), list));
   };
 
   return (
