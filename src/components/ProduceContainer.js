@@ -22,11 +22,15 @@ const ProduceContainer = (props) => {
     <Container>
       <InputArea list={props.data} setCurrentList={setCurrentList} />
       <ProduceArea>
-        {currentList.map((produceValue, index) => (
-          <Cell key={index} cellNum={index}>
-            <ProduceCard produceValue={produceValue} />
-          </Cell>
-        ))}
+        {!currentList.length ? (
+          <div>Please Input Search In Text Area</div>
+        ) : (
+          currentList.map((produceValue, index) => (
+            <Cell key={index} cellNum={index}>
+              <ProduceCard produceValue={produceValue} />
+            </Cell>
+          ))
+        )}
       </ProduceArea>
     </Container>
   );

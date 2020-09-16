@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const FormArea = styled.div`
-  top: 0;
+  top: 20px;
   left: 45%;
   position: fixed;
 
